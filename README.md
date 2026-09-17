@@ -88,3 +88,7 @@ base. Root causes and lessons:
 Push a fix (or an empty commit) to the affected repo's `main` — the git
 deploy is the redeploy. Then re-run `./verify.sh`. Break-glass only:
 `THESIS_BREAK_GLASS=1 ./deploy.sh` (or `deploy-app.sh` / `deploy-api.sh`).
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE). Original text and figures are released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) with attribution to Thesis Institute. Third-party data and materials keep their own terms.
