@@ -40,6 +40,11 @@ checks_apex() {
     && fail "apex /  still links /paper — OLD APP nav is being served" \
     || pass "apex /  no /paper link (old-app marker absent)"
 
+  # Withdrawn forecasts can return 200, so inspect content and run-record links.
+  python3 "$(dirname "${BASH_SOURCE[0]}")/scripts/check_forecast_links.py" https://thesisinstitute.org/ \
+    && pass "apex /  featured forecasts are published" \
+    || fail "apex /  a featured forecast is missing or withdrawn"
+
   # --- apex /thesis -> 308 -> app/thesis ---
   code=$(status https://thesisinstitute.org/thesis)
   loc=$(location https://thesisinstitute.org/thesis)

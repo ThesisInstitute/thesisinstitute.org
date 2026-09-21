@@ -56,6 +56,12 @@ surface the daily recorder in MaxGhenis/brier snapshots
 (`log.json`, `ledger.json`, `targets.json`, `brier/reward.json`). Keep that
 list in sync with `.github/workflows/record-forecasts.yml` there.
 
+The homepage's featured forecasts use canonical app URLs and descriptive copy;
+their estimates and status remain on the forecast pages. GitHub Actions checks
+each featured link for a published analyst run record and rejects withdrawn
+forecasts, including pages that return HTTP 200 with "No forecast available".
+The apex canary runs the same check against the deployed homepage.
+
 A launchd agent (`org.thesisinstitute.canary`) runs `monitor.sh` daily and
 raises a macOS notification plus an email alert via `gog` (and logs to
 `.canary.log`) if any canary fails.

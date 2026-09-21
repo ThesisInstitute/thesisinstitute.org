@@ -29,7 +29,7 @@
     .fhead h2 { margin:0; }
     .fhead a { font-family:var(--font-mono); font-size:0.72rem; color:var(--accent); text-decoration:none; white-space:nowrap; }
     .fhead a:hover { text-decoration:underline; }
-    /* forecast cards — match the app's MarketCard + ForecastViz */
+    /* Published forecast examples; estimates and current status live in the app. */
     .fcard { display:flex; flex-direction:column; gap:13px; text-decoration:none; color:inherit; border:1px solid var(--border-soft); border-radius:14px; padding:18px; background:var(--paper); transition:border-color .2s, transform .2s, box-shadow .2s; }
     .fcard:hover { border-color:var(--border-strong); transform:translateY(-2px); box-shadow:0 10px 28px -16px rgba(20,32,43,.25); }
     .fcard:hover h3 { color:var(--accent); }
@@ -37,19 +37,9 @@
     .fcard .chips { display:flex; flex-wrap:wrap; gap:6px; }
     .fcard .chip { display:inline-block; border:1px solid; border-radius:999px; padding:2px 8px; font-family:var(--font-mono); font-size:0.56rem; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; }
     .fcard .chip.data { background:#EAF1F7; border-color:#D7E5F0; color:#356C99; }
-    .fcard .chip.pol { background:#F8E9F1; border-color:#ECCFE0; color:#8E3A68; }
-    .fcard .chip.live { background:#EAF4FB; border-color:#BFDBEF; color:#356C99; }
-    .fcard .chip.static { background:#F2F6F9; border-color:#E2E8EE; color:#8A99A6; }
-    .fcard .fres { flex:none; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.03em; color:var(--text-tertiary); white-space:nowrap; }
     .fcard h3 { font-family:var(--font-display); font-size:1.02rem; font-weight:600; line-height:1.3; letter-spacing:-0.01em; color:var(--text-primary); margin:0; transition:color .2s; }
-    .fcard .ffore { display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:9px; }
-    .fcard .fforelabel { font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); }
-    .fcard .fnum { font-family:var(--font-display); font-size:1.18rem; font-weight:600; letter-spacing:-0.01em; color:var(--accent); }
-    .fcard .fbar { position:relative; height:8px; border-radius:999px; background:#EAF1F6; }
-    .fcard .fbar i { position:absolute; top:0; height:8px; border-radius:999px; background:#9FC4E6; }
-    .fcard .fbar b { position:absolute; top:50%; width:2px; height:13px; border-radius:1px; transform:translate(-50%,-50%); background:var(--accent); }
-    .fcard .flabels { display:flex; justify-content:space-between; margin-top:6px; font-family:var(--font-mono); font-size:0.6rem; color:var(--text-tertiary); }
-    .fcard .flabels .pt { color:var(--accent); font-weight:500; }
+    .fcard p { margin:0; font-size:0.86rem; line-height:1.5; color:var(--text-secondary); }
+    .fcard .flink { font-family:var(--font-mono); font-size:0.65rem; color:var(--accent); }
     /* split hero — text left, sampling cards right */
     .herogrid { max-width:1180px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,480px); gap:56px; align-items:start; }
     .herotext, .herocards { min-width:0; }
@@ -82,7 +72,7 @@
         <span>thesis <small>institute</small></span>
       </a>
       <nav>
-        <a href="https://app.thesisinstitute.org/forecasts">Forecasts</a>
+        <a href="https://app.thesisinstitute.org/">Forecasts</a>
         <a href="https://app.thesisinstitute.org/log">Log</a>
         <a href="/agents">Agents</a>
         <a href="https://app.thesisinstitute.org/thesis">About</a>
@@ -106,44 +96,32 @@
       <div class="herocards">
         <div class="fhead">
           <span class="slabel">A sampling of forecasts</span>
-          <a href="https://app.thesisinstitute.org/forecasts">Browse all forecasts →</a>
+          <a href="https://app.thesisinstitute.org/">Browse all forecasts →</a>
         </div>
         <div class="hfcards">
-          <a class="fcard" href="https://app.thesisinstitute.org/forecasts/spm-child-poverty-2025">
+          <a class="fcard" href="https://app.thesisinstitute.org/unemployment-rate-september-2026">
             <div class="meta">
-              <span class="chips"><span class="chip data">Government data</span><span class="chip live">Live API path</span></span>
-              <span class="fres">resolves Sep 2026</span>
+              <span class="chips"><span class="chip data">Bureau of Labor Statistics</span></span>
             </div>
-            <h3>SPM child poverty rate, 2025</h3>
-            <div class="fviz">
-              <div class="ffore"><span class="fforelabel">forecast · 80% CI</span><span class="fnum">13.1%</span></div>
-              <div class="fbar"><i style="left:13.2%;width:73.6%"></i><b style="left:46.9%"></b></div>
-              <div class="flabels"><span>12.0%</span><span class="pt">13.1%</span><span>14.4%</span></div>
-            </div>
+            <h3>US unemployment rate, September 2026</h3>
+            <p>A forecast of the share of the civilian labor force that is unemployed, with published analysis and source evidence.</p>
+            <span class="flink">View forecast and evidence →</span>
           </a>
-          <a class="fcard" href="https://app.thesisinstitute.org/forecasts/median-household-income-2025">
+          <a class="fcard" href="https://app.thesisinstitute.org/us-private-nonresidential-fixed-investment-q3-2026">
             <div class="meta">
-              <span class="chips"><span class="chip data">Government data</span><span class="chip static">Static mock trace</span></span>
-              <span class="fres">resolves Sep 2026</span>
+              <span class="chips"><span class="chip data">Bureau of Economic Analysis</span></span>
             </div>
-            <h3>Median household income, 2025</h3>
-            <div class="fviz">
-              <div class="ffore"><span class="fforelabel">forecast · 80% CI</span><span class="fnum">$80,600</span></div>
-              <div class="fbar"><i style="left:13.2%;width:73.6%"></i><b style="left:47.4%"></b></div>
-              <div class="flabels"><span>$78,600</span><span class="pt">$80,600</span><span>$82,900</span></div>
-            </div>
+            <h3>US private nonresidential fixed investment, Q3 2026</h3>
+            <p>Investment in structures, equipment, and intellectual property, forecast against the official national accounts.</p>
+            <span class="flink">View forecast and analysis →</span>
           </a>
-          <a class="fcard" href="https://app.thesisinstitute.org/forecasts/eitc-max-credit-three-children-ty2027">
+          <a class="fcard" href="https://app.thesisinstitute.org/us-private-research-development-fixed-investment-q3-2026">
             <div class="meta">
-              <span class="chips"><span class="chip pol">Policy</span><span class="chip static">Static mock trace</span></span>
-              <span class="fres">resolves Oct 2026</span>
+              <span class="chips"><span class="chip data">Bureau of Economic Analysis</span></span>
             </div>
-            <h3>Maximum EITC, 3+ children, TY2027</h3>
-            <div class="fviz">
-              <div class="ffore"><span class="fforelabel">forecast · 80% CI</span><span class="fnum">$8,500</span></div>
-              <div class="fbar"><i style="left:13.2%;width:73.6%"></i><b style="left:44.8%"></b></div>
-              <div class="flabels"><span>$8,050</span><span class="pt">$8,500</span><span>$9,100</span></div>
-            </div>
+            <h3>US private R&amp;D investment, Q3 2026</h3>
+            <p>Research and development investment, with the forecast interval, reasoning, and run record available to inspect.</p>
+            <span class="flink">View forecast and analysis →</span>
           </a>
         </div>
       </div>
