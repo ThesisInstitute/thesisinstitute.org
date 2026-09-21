@@ -1,0 +1,21 @@
+name: Homepage
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forecast-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Verify featured forecasts are still published
+        run: python3 scripts/check_forecast_links.py index.html
