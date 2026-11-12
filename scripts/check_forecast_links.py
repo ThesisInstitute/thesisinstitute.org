@@ -70,9 +70,10 @@ def main():
         visible = " ".join(" ".join(page.text).split()).casefold()
         if "no forecast available" in visible or "this page could not be found" in visible:
             raise ValueError(f"Withdrawn or missing forecast: {url}")
-        # The app marks a forecast "Overdue" once its resolution date has
-        # passed with no recorded outcome.
-        if "overdue" in visible:
+        # The app's banner reads "Overdue · was due <date>" once a forecast's
+        # resolution date has passed with no recorded outcome. Match the
+        # banner, not the bare word, which a forecast's analysis may use.
+        if "overdue · was due" in visible:
             raise ValueError(f"Featured forecast is overdue with no outcome: {url}")
         has_run_record = any(
             link.startswith("https://github.com/ThesisInstitute/thesis/")
