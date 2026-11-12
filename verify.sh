@@ -43,7 +43,7 @@ checks_apex() {
   # Withdrawn forecasts can return 200, so inspect content and run-record links.
   python3 "$(dirname "${BASH_SOURCE[0]}")/scripts/check_forecast_links.py" https://thesisinstitute.org/ \
     && pass "apex /  featured forecasts are published" \
-    || fail "apex /  a featured forecast is missing or withdrawn"
+    || fail "apex /  a featured forecast is missing, withdrawn or overdue"
 
   # --- apex /thesis -> 308 -> app/thesis ---
   code=$(status https://thesisinstitute.org/thesis)

@@ -1,4 +1,4 @@
-"""Check featured forecasts, including withdrawn pages that still return HTTP 200."""
+"""Check featured forecasts: withdrawn pages that still return HTTP 200, and overdue ones."""
 
 import sys
 import time
@@ -70,6 +70,10 @@ def main():
         visible = " ".join(" ".join(page.text).split()).casefold()
         if "no forecast available" in visible or "this page could not be found" in visible:
             raise ValueError(f"Withdrawn or missing forecast: {url}")
+        # The app marks a forecast "Overdue" once its resolution date has
+        # passed with no recorded outcome.
+        if "overdue" in visible:
+            raise ValueError(f"Featured forecast is overdue with no outcome: {url}")
         has_run_record = any(
             link.startswith("https://github.com/ThesisInstitute/thesis/")
             and "/records/thesis-analyst/" in link
